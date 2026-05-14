@@ -2,6 +2,8 @@ package com.pathpulse.controller;
 
 
 import Service.AuthService;
+import com.pathpulse.dto.auth.AuthResponse;
+import com.pathpulse.dto.auth.LoginRequest;
 import com.pathpulse.dto.auth.RegisterRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +22,12 @@ public class AuthController {
     {
         authService.register(request);
         return "User registered successfully";
+    }
+    @PostMapping("/login")
+    public AuthResponse login(
+            @Valid @RequestBody LoginRequest request
+    ) {
+
+        return authService.login(request);
     }
 }
